@@ -311,7 +311,7 @@ void netmap_catch_tx(struct netmap_generic_adapter *gna, int enable)
         gna->generic_ndo.ndo_select_queue = &generic_ndo_select_queue;
 #endif
 
-        ifp->netdev_ops = &gna->generic_ndo;
+	ifp->netdev_ops = &gna->generic_ndo;
     } else {
 	/* Restore the original netdev_ops. */
         ifp->netdev_ops = (void *)na->if_transmit;

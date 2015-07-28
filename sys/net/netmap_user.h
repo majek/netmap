@@ -284,7 +284,7 @@ typedef void (*nm_cb_t)(u_char *, const struct nm_pkthdr *, const u_char *d);
  *		-NN		bind individual NIC ring pair
  *		{NN		bind master side of pipe NN
  *		}NN		bind slave side of pipe NN
- *		a suffix starting with + and the following flags,
+ *		a second suffix part starting with / and the following flags,
  *		in any order:
  *		x		exclusive access
  *		z		zero copy monitor
@@ -448,6 +448,9 @@ nm_open(const char *ifname, const struct nmreq *req,
 				break;
 			case 'r':
 				nr_flags |= NR_MONITOR_RX;
+				break;
+			case 'f':
+				nr_flags |= NR_FORWARD;
 				break;
 			default:
 				snprintf(errmsg, MAXERRMSG, "unrecognized flag: '%c'", *port);
